@@ -54,7 +54,7 @@ loadDependencies()
                 const urls: string[] = scrape(result.data)
                     .filter((item: string) => item[0] === 'h');
 
-                setCache(work.url, JSON.stringify(urls));
+                await setCache(work.url, JSON.stringify(urls));
 
                 console.log(`publishing to ${work.serverId}`);
                 await publish(
@@ -69,7 +69,9 @@ loadDependencies()
             })
     })
     .catch(err => {
+        console.log("we crushed!");
+        
         console.log(err);
-        process.exit(1)
+        process.exit(1);
     })
 

@@ -39,8 +39,10 @@ export class UseDependency {
 
 export class DependenciesContainer {
     private dependencies: DependencyContainer[]
+    private log: Map<DependencyContainer, number>;
 
     constructor(dependencies: DependencyContainer[]) {
+        this.log = new Map()
         this.dependencies = dependencies
     }
 
@@ -55,7 +57,8 @@ export class DependenciesContainer {
             this.dependencies.find(item => item.name === dependency)
 
         if (!dep) return undefined
-
+        const count = this.log.get(dep)
+        this.log.set(dep, count ? count + 1 : 1)
         switch (dep.type) {
             case 'constructor':
                 return new dep.dependency()

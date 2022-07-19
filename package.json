@@ -9,6 +9,7 @@
     "start-one": "node dist/index.js 4001",
     "start-two": "node dist/index.js 4002",
     "start-three": "node dist/index.js 4003",
+    "start-four": "node dist/index.js 4003",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
   "author": "",
